@@ -11,6 +11,7 @@ import 'package:node_auth/domain/usecases/login_use_case.dart';
 import 'package:node_auth/domain/usecases/logout_use_case.dart';
 import 'package:node_auth/domain/usecases/register_use_case.dart';
 import 'package:node_auth/domain/usecases/upload_image_use_case.dart';
+import 'package:node_auth/pages/crop_details_page.dart';
 import 'package:node_auth/pages/home/home.dart';
 import 'package:node_auth/pages/login/login.dart';
 import 'package:node_auth/pages/register/register.dart';
@@ -48,6 +49,19 @@ class MyApp extends StatelessWidget {
             );
           },
           child: const HomePage(),
+        );
+      },
+      CropDetailsPage.routeName: (context) {
+        return BlocProvider<HomeBloc>(
+          initBloc: (context) {
+            final userRepository = context.get<UserRepository>();
+            return HomeBloc(
+              LogoutUseCase(userRepository),
+              GetAuthStateStreamUseCase(userRepository),
+              UploadImageUseCase(userRepository),
+            );
+          },
+          child: const CropDetailsPage(),
         );
       },
       LoginPage.routeName: (context) {
