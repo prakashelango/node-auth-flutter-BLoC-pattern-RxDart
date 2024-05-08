@@ -181,7 +181,7 @@ class _LoginScreen extends State<LoginScreen> {
                               ),
                               onTap: () {
                                 showOrHideProgress(true);
-                                if (email == "Kannan" && password == "1234") {
+                                if (email == 'Kannan' && password == '1234') {
                                   navigateToDashboard(context);
                                 }
 

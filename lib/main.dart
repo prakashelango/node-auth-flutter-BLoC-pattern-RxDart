@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cupertino_http/cupertino_http.dart';
 import 'package:disposebag/disposebag.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart'
     show debugPrint, debugPrintSynchronously, kReleaseMode;
 import 'package:flutter/material.dart';
@@ -72,6 +73,14 @@ void main() async {
   final UserRepository userRepository = UserRepositoryImpl(
     remoteDataSource,
     localDataSource,
+  );
+
+  await Firebase.initializeApp(
+      options: const FirebaseOptions(apiKey: 'AIzaSyDSSIBsrEztVBv4DiP8OTFJxh7F1degUNY',
+          appId: '1:778925904779:android:4e7786eb5d68009a17158e',
+          messagingSenderId: '778925904779',
+          projectId:'flutter-d8e01',
+          databaseURL: 'https://flutter-d8e01-default-rtdb.firebaseio.com/')
   );
 
   runApp(
